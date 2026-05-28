@@ -1,0 +1,44 @@
+provider:
+  id: gemini/flash
+  keys_id: gemini
+
+  enable: true
+  hidden: false
+
+  require_auth: true
+
+  endpoint:
+    default: https://generativelanguage.googleapis.com
+
+  schema:
+    - id: gemini
+      upstream_path: /v1beta
+    - id: openai
+      upstream_path: /v1beta/openai
+
+  limit:
+    payload:
+      input: 65536
+      output: 4096
+
+  concurrency:
+    identity: 1
+    keys:
+      same_key: 1
+      max_usage_same_key: 3
+
+  override:
+    strip_mode: minimal
+    headers: []
+    path: []
+    models: []
+
+  filter_models:
+    - models/gemini-3-flash-preview
+    - gemini-3-flash-preview
+    - models/gemma-4-31b-it
+    - gemma-4-31b-it
+
+  cooldown:
+    default: 10s
+    chat_completion: 45s

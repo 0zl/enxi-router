@@ -1,0 +1,40 @@
+provider:
+  id: openai
+  keys_id: openai
+
+  enable: false
+  hidden: true
+
+  require_auth: true
+
+  endpoint:
+    default: https://api.openai.com
+
+  schema:
+    - id: openai
+      upstream_path: /v1
+
+  limit:
+    payload:
+      input: 65536
+      output: 8192
+
+  concurrency:
+    identity: 1
+    keys:
+      same_key: 1
+      max_usage_same_key: 1
+
+  override:
+    strip_mode: minimal
+    headers:
+      - key: user-agent
+        value: "Kilo-Code/5.7.0"
+    path: []
+    models: []
+
+  filter_models: []
+
+  cooldown:
+    default: 10s
+    chat_completion: 50s

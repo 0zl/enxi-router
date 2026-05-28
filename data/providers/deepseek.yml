@@ -1,0 +1,49 @@
+provider:
+  id: deepseek
+  keys_id: deepseek
+
+  enable: true
+  hidden: false
+
+  require_auth: false
+
+  priority: 10
+
+  endpoint:
+    default: https://api.deepseek.com
+
+  schema:
+    - id: openai
+      upstream_path: /v1
+    - id: anthropic
+      upstream_path: /anthropic
+
+  limit:
+    payload:
+      input: 73728
+      output: 16384
+
+  concurrency:
+    identity: 1
+    keys:
+      same_key: 2
+      max_usage_same_key: 4
+
+  override:
+    headers:
+      - key: user-agent
+        value: "claude-cli/2.1.12 (external, cli)"
+      - key: anthropic-beta
+        value: "claude-code-20250219,interleaved-thinking-2025-05-14"
+      - key: anthropic-version
+        value: "2023-06-01"
+    path:
+      - path: /user/balance
+        status: 403
+    models: ["deepseek-v4-flash", "deepseek-v4-pro"]
+
+  filter_models: []
+
+  cooldown:
+    default: 10s
+    chat_completion: 35s

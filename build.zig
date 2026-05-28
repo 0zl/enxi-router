@@ -75,7 +75,11 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
+        .link_libc = true,
     });
+    test_mod.addImport("httpz", httpz.module("httpz"));
+    test_mod.addImport("zqlite", zqlite.module("zqlite"));
+    test_mod.addImport("yaml", yaml.module("yaml"));
 
     const unit_tests = b.addTest(.{
         .root_module = test_mod,

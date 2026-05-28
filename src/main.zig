@@ -1,6 +1,12 @@
 const std = @import("std");
 const types = @import("config/types.zig");
+const config = @import("config/config.zig");
 const httpz = @import("httpz");
+
+// Ensure config module is compiled and its tests are discovered.
+comptime {
+    _ = config;
+}
 
 pub fn main() !void {
     std.debug.print("enxi-router starting\n", .{});

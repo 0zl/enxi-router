@@ -45,17 +45,21 @@
 ## Phase 1: Config Loading
 
 ### Config Loader (`src/config/config.zig`)
-- [ ] `loadServerConfig(allocator, path) -> ServerConfig`
-- [ ] `loadProviders(allocator, dir_path) -> []Provider`
-- [ ] Handle required vs optional fields with defaults
-- [ ] Validate provider config (non-empty id, at least one schema, valid endpoint)
+- [x] `loadServerConfig(arena, path) -> ServerConfig`
+- [x] `loadProviders(arena, dir_path) -> []Provider`
+- [x] Handle required vs optional fields with defaults
+- [x] Validate provider config (non-empty id, at least one schema, valid endpoint)
 
 ### Tests
-- [ ] Parse `openai.yml` - single schema, simple provider
-- [ ] Parse `deepseek.yml` - multi-schema, header overrides, hardcoded models
-- [ ] Parse `zai.yml` - multi-schema with per-schema base URLs, strip_path
-- [ ] Parse `gemini-flash.yml` - keys_metadata, filter_models, scripts
-- [ ] Error on malformed YAML (missing required fields)
+- [x] Parse `openai.yml` - single schema, simple provider
+- [x] Parse `deepseek.yml` - multi-schema, header overrides, hardcoded models
+- [x] Parse `zai.yml` - multi-schema with per-schema base URLs, strip_path
+- [x] Parse `gemini-flash.yml` - filter_models, empty models
+- [x] Error on malformed YAML (missing required fields)
+- [x] Server config parsing with defaults
+- [x] Extra YAML fields ignored (pricing, scripts, etc.)
+- [x] Integration: loadProviders from data/providers/
+- [x] Integration: loadServerConfig from data/config.yml
 
 ---
 

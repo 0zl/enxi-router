@@ -1,0 +1,58 @@
+provider:
+  id: zai
+  keys_id: zai
+
+  enable: true
+  hidden: false
+
+  require_auth: false
+
+  priority: 5
+
+  endpoint:
+    default: https://api.z.ai/api/paas
+    regular: https://api.z.ai/api/paas
+    coding: https://api.z.ai/api/coding/paas
+
+  schema:
+    - id: openai
+      upstream_path: /v4
+      strip_path: /v1
+    - id: anthropic
+      base: https://api.z.ai/api
+      upstream_path: /anthropic
+
+  limit:
+    payload:
+      input: 65536
+      output: 32768
+
+  concurrency:
+    identity: 1
+    keys:
+      same_key: 2
+      max_usage_same_key: 1
+
+  override:
+    strip_mode: minimal
+    headers:
+      - key: user-agent
+        value: "claude-cli/1.0.2456 (external, cli)"
+      - key: anthropic-version
+        value: "2023-06-01"
+    path: []
+    models:
+      - glm-4.6
+      - glm-4.6v
+      - glm-4.7
+      - glm-4.7-flash
+
+  filter_models: []
+
+  cooldown:
+    default: 10s
+    chat_completion: 35s
+
+  stream:
+    sse_reframe: true
+    sse_keepalive: 15s

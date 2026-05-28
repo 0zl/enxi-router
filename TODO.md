@@ -11,29 +11,29 @@
 ## Phase 0: Foundation
 
 ### Build System
-- [ ] `build.zig` - project build configuration
-- [ ] `build.zig.zon` - dependency manifest (httpz, sqlite, yaml)
+- [x] `build.zig` - project build configuration
+- [x] `build.zig.zon` - dependency manifest (httpz, sqlite, yaml)
 
 ### Dependencies
-- [ ] Evaluate and choose HTTP server (`httpz` vs raw)
-- [ ] Evaluate and choose YAML parser (`knownyaml` vs `yaml.zig` vs C `libyaml`)
-- [ ] Evaluate and choose SQLite binding (direct C `sqlite3` vs `sqlite.zig`)
-- [ ] Wire dependencies into `build.zig.zon`
+- [x] Evaluate and choose HTTP server (`httpz` -- karlseguin/http.zig, master, Zig 0.16.0)
+- [x] Evaluate and choose YAML parser (`zig-yaml` -- kubkon, main, v0.3.0)
+- [x] Evaluate and choose SQLite binding (`zqlite` -- karlseguin, master, Zig 0.16.0)
+- [x] Wire dependencies into `build.zig.zon`
 
 ### Core Types (`src/config/types.zig`)
-- [ ] `SchemaType` enum (openai, anthropic, gemini)
-- [ ] `EndpointType` enum (chat_completion, image_generation, passthrough)
-- [ ] `KeyState` enum (active, ratelimited, error, disabled)
-- [ ] `Provider` struct
-- [ ] `SchemaConfig` struct
-- [ ] `EndpointConfig` struct
-- [ ] `PayloadLimit` struct
-- [ ] `ConcurrencyConfig` + `KeyConcurrencyConfig` structs
-- [ ] `OverrideConfig` struct (headers, path overrides, models, strip_mode)
-- [ ] `ModelRemap` struct (client -> upstream model ID mapping)
-- [ ] `CooldownConfig` struct
-- [ ] `StreamConfig` struct
-- [ ] `ServerConfig` struct
+- [x] `SchemaType` enum (openai, anthropic, gemini)
+- [x] `EndpointType` enum (chat_completion, image_generation, passthrough)
+- [x] `KeyState` enum (active, ratelimited, error, disabled)
+- [x] `Provider` struct
+- [x] `SchemaConfig` struct
+- [x] `EndpointConfig` struct
+- [x] `PayloadLimit` struct
+- [x] `ConcurrencyConfig` + `KeyConcurrencyConfig` structs
+- [x] `OverrideConfig` struct (headers, path overrides, models, strip_mode)
+- [x] `ModelRemap` struct (client -> upstream model ID mapping)
+- [x] `CooldownConfig` struct
+- [x] `StreamConfig` struct
+- [x] `ServerConfig` struct
 
 ### Documentation
 - [x] `AGENTS.md` - agent guidelines
